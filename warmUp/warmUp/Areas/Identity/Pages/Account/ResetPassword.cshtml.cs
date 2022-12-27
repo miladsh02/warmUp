@@ -16,9 +16,9 @@ namespace warmUp.Areas.Identity.Pages.Account
 {
     public class ResetPasswordModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<CustomIdentityUser> _userManager;
 
-        public ResetPasswordModel(UserManager<IdentityUser> userManager)
+        public ResetPasswordModel(UserManager<CustomIdentityUser> userManager)
         {
             _userManager = userManager;
         }
