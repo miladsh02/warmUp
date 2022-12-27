@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using warmUp.Data;
+using Microsoft.AspNetCore.Identity.UI;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,12 +24,14 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 
-builder.Services.AddDbContext<ApplicationDbContext>();
-
-builder.Services.AddIdentity<CustomIdentityUser,IdentityRole>()
+builder.Services.AddIdentity<CustomIdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
-    .AddDefaultTokenProviders();
+    .AddDefaultTokenProviders()
+    .AddDefaultUI();
+
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
